@@ -16,12 +16,11 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'dockerhub') {
-                        sh 'docker push shaikmustafa/paytm:bank'
+                        sh 'docker push'
                     }
                 }
             }
         }
-        
         stage ("Deploy") {
             steps {
                 sh 'docker run -itd --name bank-app -p 1111:80 shaikmustafa/paytm:bank'
