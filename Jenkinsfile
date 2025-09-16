@@ -16,7 +16,7 @@ pipeline {
             steps {
                 script {
                withDockerRegistry(credentialsId: 'new-docker', url: 'https://github.com/jutooruvineela14/multibranch-docker.git') {
-                   sh 'docker push vineela0714/paytm'
+                   sh 'docker push vineela0714/paytm:bank'
                }  
             }
         }
