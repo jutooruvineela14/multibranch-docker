@@ -12,15 +12,15 @@ pipeline {
                 sh 'docker tag image3 shaikmustafa/paytm:movie'
             }
         }
-     stage('push') {
+         stage('Push') {
             steps {
                 script {
-               withDockerRegistry(credentialsId: 'new-docker', url: 'https://github.com/jutooruvineela14/multibranch-docker.git') {
-                   sh 'docker push vineela0714/paytm:movie'
-              }  
+                     withDockerRegistry(credentialsId: 'dockerhub', url: 'https://github.com/jutooruvineela14/multibranch-docker.git') {
+                          sh 'docker push '
+                    }     
+                }
             }
         }
-    }
         stage ("Deploy") {
             steps {
                 sh 'docker run -itd --name movie-app -p 3333:80 shaikmustafa/paytm:movie'
