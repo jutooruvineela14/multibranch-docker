@@ -12,15 +12,15 @@ pipeline {
                 sh 'docker tag image2 shaikmustafa/paytm:bus'
             }
         }
-       stage('Push') {
+      stage('push') {
             steps {
                 script {
-                    withDockerRegistry(credentialsId: 'dockerhub') {
-                        sh 'docker push shaikmustafa/paytm:bus'
-                    }
-                }
+               withDockerRegistry(credentialsId: 'new-docker', url: 'https://github.com/jutooruvineela14/multibranch-docker.git') {
+                   sh 'docker push vineela0714/paytm:bus'
+              }  
             }
         }
+    }
 
         stage ("Deploy") {
             steps {
